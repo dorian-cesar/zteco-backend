@@ -1,0 +1,82 @@
+lectura de tarjetas 
+
+Fecha/Hora: 2025-01-29 15:46:15
+Evento: Apertura con verificación normal
+Área: Nombre de Área
+PIN: 121314
+Tarjeta: 121314
+*Verificación: Solo Tarjeta
+Dispositivo: Andenes
+*Lector: INBIO-2-Entrada
+
+Fecha/Hora: 2025-01-29 15:47:51
+Evento: Error de modo de verificación
+Área: Nombre de Área
+PIN:
+Tarjeta:
+Verificación: common_verifyMode_undefined255
+Dispositivo: Andenes
+Lector: INBIO-2-Entrada
+***********************************************
+lectuara de LPR
+
+Fecha/Hora: 2025-01-29 15:49:25
+Evento: Intervalo de operación muy corto
+Área: Nombre de Área
+PIN:
+Tarjeta:
+Verificación: Otro
+Dispositivo: Andenes
+Lector: INBIO-1-Entrada
+
+Fecha/Hora: 2025-01-29 15:51:53
+Evento: Apertura con verificación normal
+Área: Nombre de Área
+PIN: GKSB78
+Tarjeta:
+Verificación: Solo PIN
+Dispositivo: Andenes
+Lector: INBIO-1-Entrada
+
+***************
+{"code":0,
+"message":"success",
+"data":[
+    {"id":null,
+    "eventTime":"2025-01-29 16:06:50",
+    "pin":"PTCL21",
+    "name":"",
+    "lastName":"",
+    "deptName":"",
+    "areaName":"Nombre de Área",
+    "cardNo":"",
+    "devSn":"MWA5242100077",
+    "verifyModeName":"Solo PIN",
+    "eventName":"Usuario no registrado",
+    "eventPointName":"Salida (Andenes)",
+    "readerName":"INBIO-1-Entrada",
+    "readerState":0,
+    "accZone":null,
+    "devName":"Andenes",
+    "logId":790,
+    "eventNo":27,
+    "eventLevel":1,
+    "doorName":"Salida (Andenes)",
+    "capturePhotoBase64":"",
+    "doorNumber":1
+    }]}
+
+
+    {
+"id": "2c9a86e09499c21c0194b82245b7251c",
+"name": "AndenesCalama-Entrada",
+"deviceId": "2c9a86e09499c21c0194b822458324e1"
+},
+{
+"id": "2c9a86e09499c21c0194b82245b7251d",
+"name": "AndenesCalama-Salida",
+"deviceId": "2c9a86e09499c21c0194b822458324e1"
+}
+
+
+
