@@ -4,7 +4,10 @@ header("Content-Type: application/json"); // Respuesta en JSON
 
 include 'config.php';
 
-$doorId = "2c9a86e09499c21c0194b82245b7251d"; // ID de la puerta de salida
+//$doorId = "2c9a86e09499c21c0194b82245b7251d"; // ID de la puerta de salida Andenes
+
+$doorId = "2c9a86e09499c21c0194e674b01916ce"; // ID de la puerta de salida parking
+
 $interval = 1; // Tiempo de apertura en segundos
 
 // Construcción de la URL del endpoint
