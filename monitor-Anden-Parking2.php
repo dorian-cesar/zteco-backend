@@ -206,7 +206,7 @@ function verificarRegistroReciente($dbHost, $dbUser, $dbPass, $dbName, $patente)
     $diferencia = $horaEntrada->diff($horaActual);
 
     // Si han pasado menos de 5 minutos, se considera duplicado
-    if ($diferencia->i < 5) {
+    if ($diferencia->i < 1) {
         echo "⚠️ Registro ignorado: La patente $patente ya se registró hace menos de 5 minutos.\n";
         return true;
     }
@@ -624,8 +624,8 @@ function verificarRegistroSalida($dbHost, $dbUser, $dbPass, $dbName, $patente)
     $diferencia = $horaEntrada->diff($horaActual);
 
     // Si han pasado menos de 5 minutos, se considera duplicado
-    if ($diferencia->i < 5) {
-        echo "⚠️ Registro ignorado: La patente $patente ya se registró Salida hace menos de 5 minutos.\n";
+    if ($diferencia->i < 1) {
+        echo "⚠️ Registro ignorado: La patente $patente ya se registró Salida hace menos de 1 minutos.\n";
         return true;
     }
 
