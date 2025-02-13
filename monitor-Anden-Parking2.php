@@ -163,6 +163,7 @@ while (true) {
                         }
 
                         echo json_encode([
+                            "patente"=>$patente,
                             "eventTime" => $event['eventTime'],
                             "eventName" => $event['eventName'],
                             "user_created" => $createUserResponse['message'],
