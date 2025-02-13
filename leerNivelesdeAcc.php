@@ -21,6 +21,7 @@ curl_setopt_array($curl, [
 ]);
 
 // Ejecutar la solicitud
+echo 
 $response = curl_exec($curl);
 
 // Manejar errores
@@ -33,15 +34,17 @@ if (curl_errno($curl)) {
 // Cerrar cURL
 curl_close($curl);
 
-// Procesar la respuesta
-$data = json_decode($response, true);
 
-if ($data && isset($data['code']) && $data['code'] === 0) {
-    echo "Lista de niveles de acceso:\n";
-    foreach ($data['data'] as $accessLevel) {
-        echo "ID: " . $accessLevel['id'] . " - Nombre: " . $accessLevel['name'] . "\n";
-    }
-} else {
-    echo "Error al obtener los niveles de acceso: " . ($data['message'] ?? "Respuesta inválida");
-}
-?>
+
+// // Procesar la respuesta
+// $data = json_decode($response, true);
+
+// if ($data && isset($data['code']) && $data['code'] === 0) {
+//     echo "Lista de niveles de acceso:\n";
+//     foreach ($data['data'] as $accessLevel) {
+//         echo "ID: " . $accessLevel['id'] . " - Nombre: " . $accessLevel['name'] . "\n";
+//     }
+// } else {
+//     echo "Error al obtener los niveles de acceso: " . ($data['message'] ?? "Respuesta inválida");
+// }
+ ?>
