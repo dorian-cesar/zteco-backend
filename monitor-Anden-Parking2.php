@@ -63,8 +63,8 @@ while (true) {
              $eventName = $event['eventName']; // Tipo de evento
              $readerName=$event['readerName'];
 
-            // 🚨 **Si el evento es "Acceso denegado", muestra un mensaje en consola**
-            if ($eventName === "Acceso denegado" && $readerName === "AndenesCalama-2-Salida" || $eventName === "Acceso denegado" && $readerName === "ParkingCalama-2-Salida") {
+            // 🚨 **Si el evento es "Usuario no registrado" y salida , muestra un mensaje en consola**
+            if ($eventName === "Usuario no registrado" && $readerName === "AndenesCalama-2-Salida" || $eventName === "Usuario no registrado" && $readerName === "ParkingCalama-2-Salida") {
 
                 echo "⚠️ ACCESO DENEGADO: El usuario con Patente {$userPin} no tiene permiso.\n";
 
@@ -97,7 +97,7 @@ while (true) {
                 };
             }
            
-            // 📌 **Si el evento es "Usuario no registrado", se procesa normalmente**
+            // 📌 **Si el evento es "Usuario no registrado" y entrada **
             if ($eventName === "Usuario no registrado"&& $readerName==="AndenesCalama-1-Entrada" || $eventName === "Usuario no registrado"&& $readerName==="ParkingCalama-1-Entrada") {
                 $patente = strtoupper($event['pin']); // Se usa el PIN como patente
                 $fechaEntrada = date("Y-m-d"); // Fecha actual
