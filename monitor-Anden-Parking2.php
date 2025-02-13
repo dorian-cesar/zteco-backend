@@ -83,18 +83,25 @@ while (true) {
                 }
 
 
+                if (!verificarRegistroSalida($dbHost, $dbUser, $dbPass, $dbName, $patente)){
 
-
-                if (verificarPagoSalida($dbHost, $dbUser, $dbPass, $dbName, $patente)) {
-
-                    abrirPuertaSalida($serverIP, $serverPort, $apiToken, $doorId, $userPin, $accessLevelIds);
-                } else {
-
-                    if (verificarTiempoEstadia($dbHost, $dbUser, $dbPass, $dbName, $patente,$tiempo)) {
+                    if (verificarPagoSalida($dbHost, $dbUser, $dbPass, $dbName, $patente)) {
 
                         abrirPuertaSalida($serverIP, $serverPort, $apiToken, $doorId, $userPin, $accessLevelIds);
-                    }
-                };
+                    } else {
+    
+                        if (verificarTiempoEstadia($dbHost, $dbUser, $dbPass, $dbName, $patente,$tiempo)) {
+    
+                            abrirPuertaSalida($serverIP, $serverPort, $apiToken, $doorId, $userPin, $accessLevelIds);
+                        }
+                    };
+
+                    
+
+
+                }
+
+                
             }
            
             // 📌 **Si el evento es "Usuario no registrado" y entrada **
@@ -587,6 +594,41 @@ function actualizarEstadoSalida($dbHost, $dbUser, $dbPass, $dbName, $patente)
 
     $stmt->close();
     $conn->close();
+}
+
+
+function verificarRegistroSalida($dbHost, $dbUser, $dbPass, $dbName, $patente)
+{
+    $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+    if ($conn->connect_error) {
+        die(json_encode(["status" => "error", "message" => "Error de conexión a la base de datos: " . $conn->connect_error]));
+    }
+
+    // Obtener el último registro de la patente
+    $stmt = $conn->prepare("SELECT horasal FROM movParking WHERE patente = ? ORDER BY idmov DESC LIMIT 1");
+    $stmt->bind_param("s", $patente);
+    $stmt->execute();
+    $stmt->bind_result($horaEntrada);
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+
+    if (!$horaEntrada) {
+        return false; // No hay registros previos, podemos registrar
+    }
+
+    // Obtener la hora actual
+    $horaActual = new DateTime();
+    $horaEntrada = new DateTime($horaEntrada);
+    $diferencia = $horaEntrada->diff($horaActual);
+
+    // Si han pasado menos de 5 minutos, se considera duplicado
+    if ($diferencia->i < 5) {
+        echo "⚠️ Registro ignorado: La patente $patente ya se registró Salida hace menos de 5 minutos.\n";
+        return true;
+    }
+
+    return false; // Se permite registrar
 }
 
 
