@@ -144,10 +144,11 @@ while (true) {
                         // 2. Asignar nivel de acceso al usuario recién creado
                       //  $assignAccessUrl = "http://$serverIP:$serverPort/api/accLevel/addLevelPerson?levelIds=$accessLevelIds&pin=$userPin&access_token=$apiToken";
                       //  $assignAccessResponse = sendPostRequest($assignAccessUrl, []);
-                      abrirPuertaSalida($serverIP, $serverPort, $apiToken, $doorId, $userPin, $accessLevelIds);
+                     
                       
                         // 3. Registrar en la base de datos si no ha sido registrado en la última hora
                         if (!verificarRegistroReciente($dbHost, $dbUser, $dbPass, $dbName, $patente)) {
+                            abrirPuertaSalida($serverIP, $serverPort, $apiToken, $doorId, $userPin, $accessLevelIds);
                             registrarEntradaParking($dbHost, $dbUser, $dbPass, $dbName, $fechaEntrada, $horaEntrada, $patente,$tarifa,$tipo);
                             $parkingStatus = "Registro guardado en la base de datos";
                         } else {
