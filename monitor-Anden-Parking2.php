@@ -73,21 +73,21 @@ while (true) {
 
                     $doorId="2c9a86e09499c21c0194b82245b7251d";
                     $accessLevelIds="2c9a86e09499c21c0194b8a31c062624";
-                    $tiempo=30;
+                    $tiempo=5;
                     $tipo = "Anden";
                 }
                 if($readerName === "ParkingCalama-2-Salida"){
 
                     $doorId="2c9a86e09499c21c0194e674b01916ce";
                     $accessLevelIds="2c9a86e09499c21c0194e74e1d602a7d";
-                    $tiempo=10;
+                    $tiempo=5;
                     $tipo = "Parking";
                 }
 
 
                 if (!verificarRegistroSalida($dbHost, $dbUser, $dbPass, $dbName, $patente,$tipo)){
 
-                    if (verificarPagoSalida($dbHost, $dbUser, $dbPass, $dbName, $patente)) {
+                    if (verificarPagoSalida($dbHost, $dbUser, $dbPass, $dbName, $patente,$tipo)) {
 
                         abrirPuertaSalida($serverIP, $serverPort, $apiToken, $doorId, $userPin, $accessLevelIds);
                     } else {
@@ -306,7 +306,7 @@ function abrirPuertaSalida3($serverIP, $serverPort, $apiToken, $doorId)
 
 // Función para verificar si la patente tiene un pago registrado en la última transacción.
 
-function verificarPagoSalida($dbHost, $dbUser, $dbPass, $dbName, $patente)
+function verificarPagoSalida($dbHost, $dbUser, $dbPass, $dbName, $patente,$tipo)
 {
    $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
    if ($conn->connect_error) {
@@ -314,8 +314,8 @@ function verificarPagoSalida($dbHost, $dbUser, $dbPass, $dbName, $patente)
    }
 
    // Buscar el último registro de la patente y verificar si el valor pagado es mayor a 0
-   $stmt = $conn->prepare("SELECT valor FROM movParking WHERE patente = ? ORDER BY idmov DESC LIMIT 1");
-   $stmt->bind_param("s", $patente);
+   $stmt = $conn->prepare("SELECT valor FROM movParking WHERE patente = ? and tipo = ? ORDER BY idmov DESC LIMIT 1");
+   $stmt->bind_param("ss", $patente,$tipo);
    $stmt->execute();
    $stmt->bind_result($valor);
    $stmt->fetch();
