@@ -73,14 +73,14 @@ while (true) {
 
                     $doorId="2c9a86e09499c21c0194b82245b7251d";
                     $accessLevelIds="2c9a86e09499c21c0194b8a31c062624";
-                    $tiempo=5;
+                    $tiempo=20;
                     $tipo = "Anden";
                 }
                 if($readerName === "ParkingCalama-2-Salida"){
 
                     $doorId="2c9a86e09499c21c0194e674b01916ce";
                     $accessLevelIds="2c9a86e09499c21c0194e74e1d602a7d";
-                    $tiempo=5;
+                    $tiempo=1;
                     $tipo = "Parking";
                 }
 
