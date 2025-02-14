@@ -102,7 +102,7 @@ while (true) {
 
 
                 }
-
+                    echo "evento duplicado";
                 
             }
            
