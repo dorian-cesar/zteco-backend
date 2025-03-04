@@ -1,4 +1,21 @@
 <?php
+// Configura el tipo de contenido
+header("Content-Type: application/json; charset=UTF-8");
+
+// Permitir solicitudes desde cualquier origen (para pruebas)
+header("Access-Control-Allow-Origin: *");
+
+// Permitir métodos específicos
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+
+// Permitir encabezados específicos
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+// Manejar el preflight request (OPTIONS)
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
 // Configuración de la API
 $serverIP = "52.87.32.226"; // Cambiar por la IP del servidor ZKBio
 $serverPort = "8098";        // Cambiar por el puerto configurado
