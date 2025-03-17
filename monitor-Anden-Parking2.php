@@ -157,7 +157,7 @@ while (true) {
                       
                         // 3. Registrar en la base de datos si no ha sido registrado en la última hora
                         if (!verificarRegistroReciente($dbHost, $dbUser, $dbPass, $dbName, $patente,$tipo)) {
-                            abrirPuertaSalida($serverIP, $serverPort, $apiToken, $doorId, $userPin, $accessLevelIds);
+                          //  abrirPuertaSalida($serverIP, $serverPort, $apiToken, $doorId, $userPin, $accessLevelIds);
                             registrarEntradaParking($dbHost, $dbUser, $dbPass, $dbName, $fechaEntrada, $horaEntrada, $patente,$tarifa,$tipo);
                             $parkingStatus = "Registro guardado en la base de datos";
                         } else {
