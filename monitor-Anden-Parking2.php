@@ -169,7 +169,7 @@ while (true) {
                             "eventTime" => $event['eventTime'],
                             "eventName" => $event['eventName'],
                             "user_created" => $createUserResponse['message'],
-                            "access_assigned" => $assignAccessResponse['message'],
+                            "access_assigned" => 'test' ,//$assignAccessResponse['message'],
                             "parking_status" => $parkingStatus
                         ], JSON_PRETTY_PRINT);
                     }
