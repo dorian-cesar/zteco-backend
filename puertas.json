@@ -1,0 +1,7 @@
+{"code":0,"message":"success",
+"data":
+[{"id":"2c9a86e09499c21c0194b82245b7251c","name":"AndenesCalama-Entrada","deviceId":"2c9a86e09499c21c0194b822458324e1"},
+{"id":"2c9a86e09499c21c0194b82245b7251d","name":"AndenesCalama-Salida","deviceId":"2c9a86e09499c21c0194b822458324e1"},
+{"id":"2c9a86e09499c21c0194e674b01916cd","name":"ParkingCalama-Entrada","deviceId":"2c9a86e09499c21c0194e674b00a1692"},
+{"id":"2c9a86e09499c21c0194e674b01916ce","name":"ParkingCalama-Salida","deviceId":"2c9a86e09499c21c0194e674b00a1692"},
+]}

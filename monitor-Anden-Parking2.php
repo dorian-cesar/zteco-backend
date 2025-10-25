@@ -10,10 +10,13 @@ $accessLevelIds = "2c9a86e09499c21c0194b8a31c062624"; // ID del nivel de acceso
 $doorId = "2c9a86e09499c21c0194b82245b7251d"; // ID de la puerta de salida
 
 // Configuración de la base de datos
-$dbHost = "ls-3c0c538286def4da7f8273aa5531e0b6eee0990c.cylsiewx0zgx.us-east-1.rds.amazonaws.com";
+//$dbHost = "ls-3c0c538286def4da7f8273aa5531e0b6eee0990c.cylsiewx0zgx.us-east-1.rds.amazonaws.com";
+$dbHost = "ls-ac361eb6981fc8da3000dad63b382c39e5f1f3cd.cylsiewx0zgx.us-east-1.rds.amazonaws.com";
 $dbUser = "dbmasteruser";
-$dbPass = "eF5D;6VzP$^7qDryBzDd,`+w(5e4*qI+";
-$dbName = "masgps";
+//$dbPass = "eF5D;6VzP$^7qDryBzDd,`+w(5e4*qI+";
+$dbPass="CP7>2fobZp<7Kja!Efy3Q+~g:as2]rJD";
+//$dbName = "masgps";
+$dbName= "parkingAndenes";
 
 // Obtener el timestamp actual en milisegundos
 $timestamp = round(microtime(true) * 1000);
@@ -119,7 +122,7 @@ while (true) {
                     $accessLevelIds = "2c9a86e09499c21c0194b8a31c062624";
                     $tarifa = "anden";
                     $tipo = "Anden";
-                    $doorId="2c9a86e09499c21c0194b82245b7251c";
+                    $doorId="2c9a86e09499c21c0194b82245b7251c"; 
 
 
                 }
@@ -157,9 +160,15 @@ while (true) {
                       
                         // 3. Registrar en la base de datos si no ha sido registrado en la última hora
                         if (!verificarRegistroReciente($dbHost, $dbUser, $dbPass, $dbName, $patente,$tipo)) {
-                          //  abrirPuertaSalida($serverIP, $serverPort, $apiToken, $doorId, $userPin, $accessLevelIds);
+                         
                             registrarEntradaParking($dbHost, $dbUser, $dbPass, $dbName, $fechaEntrada, $horaEntrada, $patente,$tarifa,$tipo);
                             $parkingStatus = "Registro guardado en la base de datos";
+
+                            if ($readerName==="AndenesCalama-1-Entrada"){
+                                abrirPuertaEntrada($serverIP, $serverPort, $apiToken, $doorId, $userPin, $accessLevelIds);
+                                 $parkingStatus = "Registro guardado en la base de datos y abriendo puerta de entrda Andenes";
+                            }
+                           
                         } else {
                             $parkingStatus = "Registro NO guardado (ya existe en la ultima hora)";
                         }
